@@ -1,0 +1,108 @@
+name: "ESP32 GBRL"
+board: "ESP32 GBRL"
+
+stepping:
+  engine: I2S_STREAM
+  idle_ms: 250
+  dir_delay_us: 1
+  pulse_us: 2
+  disable_delay_us: 0
+
+kinematics:
+  corexy:
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  
+  x:
+    steps_per_mm: 80
+    max_rate_mm_per_min: 10000
+    acceleration_mm_per_sec2: 1500
+    max_travel_mm: 10000
+    homing:
+      cycle: 2
+      mpos_mm: 10
+      positive_direction: false
+    
+    motor0:
+      limit_all_pin: gpio.35
+      stepstick:
+        direction_pin: I2SO.2
+        step_pin: I2SO.1
+    motor1:
+      null_motor:
+
+  y:
+    steps_per_mm: 80
+    max_rate_mm_per_min: 10000
+    acceleration_mm_per_sec2: 1500
+    max_travel_mm: 10000
+    homing:
+      cycle: 2
+      mpos_mm: 10
+      positive_direction: false
+
+    motor0:
+      limit_all_pin: gpio.32
+      stepstick:
+        direction_pin: I2SO.5
+        step_pin: I2SO.4
+    motor1:
+      null_motor:
+
+  z:
+    steps_per_mm: 80
+    max_rate_mm_per_min: 3000
+    acceleration_mm_per_sec2: 25
+    max_travel_mm: 1000
+    homing:
+      cycle: 1
+      mpos_mm: 10
+      positive_direction: true
+
+    motor0:
+      limit_all_pin: gpio.33
+      stepstick:
+        direction_pin: I2SO.8
+        step_pin: I2SO.7
+    motor1:
+      null_motor:
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+i2so:
+  bck_pin: gpio.26
+  data_pin: gpio.27
+  ws_pin: gpio.25
+
+
+sdcard:
+  cs_pin: gpio.5
+  card_detect_pin: NO_PIN
+
+coolant:
+  flood_pin: NO_PIN
+  mist_pin:  NO_PIN
+
+start:
+  must_home: false
+  deactivate_parking: false
+  check_limits: false
+        
+probe:
+  pin: NO_PIN
+
+PWM:
+  pwm_hz: 5000
+  output_pin: gpio.16
+  enable_pin: NO_PIN
+  direction_pin: NO_PIN
+  disable_with_s0: false
+  s0_with_disable: true
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 100
+  speed_map: 0=0% 255=100%
