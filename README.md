@@ -1,6 +1,9 @@
 # ESP32-3DE
+
 #ESPE_3D_GRBL_V1.0
+
 #USB-TYPE-C
+
 #自动烧录
 #五轴
 #6限位
